@@ -17,11 +17,3 @@ spec:
         image: nginx:latest
         ports:
         - containerPort: 80
-  strategy:
-    canary:
-      steps:
-      - setWeight: 25
-      - pause: {}
-      - setWeight: 50
-      - pause: {}
-      - setWeight: 100
