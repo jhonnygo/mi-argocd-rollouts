@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: deployment-testing-ingress
+  # namespace: default
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    # nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  # ingressClassName: nginx
+  # defaultBackend:
+  #   service:
+  #     name: deployment-testing
+  #     port:
+  #       number: 80
+  rules:
+  - host: yotkt.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: rollouts-demo
+            port:
+              number: 80
