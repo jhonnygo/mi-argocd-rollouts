@@ -18,6 +18,10 @@ spec:
         ports:
         - containerPort: 80
   strategy:
-    blueGreen:
-      activeService: example-app
-      previewService: example-app-preview
+    canary:
+      steps:
+      - setWeight: 25
+      - pause: {}
+      - setWeight: 50
+      - pause: {}
+      - setWeight: 100
